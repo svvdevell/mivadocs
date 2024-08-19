@@ -1,0 +1,19 @@
+Send email
+<mvt:if expr="g.Action EQ 'CSCO'">
+    <mvt:if expr="NOT ISNULL g.Order_ID">
+        <mvt:comment> Send Email to Admin</mvt:comment>
+        <mvt:assign name="l.email:to" value="'svvdevel@gmail.com'" />
+        <mvt:assign name="l.email:from" value="l.settings:store:email" />
+        <mvt:assign name="l.email:headers" value="'Content-Type: text/html; charset=UTF-8'" />
+        <mvt:assign name="l.email:subject" value="'Cancel ORDER'" />
+
+        <mvt:capture variable="l.email:message">
+        <mvt:do file="g.Module_Feature_TUI_MGR" name="l.success" value="TemplateManager_Render_Page( 'EMAIL_MERCHANT_CANCEL_ORDER' )" />
+            <mvt:eval expr="'privet'$g.Order_ID" />
+        </mvt:capture>
+        <mvt:do file="g.Module_Library_Utilities" name="l.success" value="v9_SendEmail( l.email )" />
+
+        <mvt:assign name="l.settings:messag" value="'Order 1111'" />
+
+    </mvt:if>
+</mvt:if>

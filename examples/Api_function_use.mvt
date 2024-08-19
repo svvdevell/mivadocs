@@ -1,0 +1,31 @@
+
+                <mvt:assign name="g.endpoint"       value ="'https://www.sidecut.com/mm5/json.mvc'" />
+                <mvt:assign name="g.access_token"   value ="'2887ede20910392ac7b4e438ff20f764'" />
+                <mvt:assign name="g.signature"      value ="crypto_base64_decode('nA5C7VsEkgDOfeddEnMbH6zu3q6rWZMrxxPE+kNoYH8=')" />
+                <mvt:assign name="g.timestamp" value="' \"Miva_Request_Timestamp\" : ' $ '\"' $ s.time_t $ '\",' " />
+
+                <mvt:assign name="g.json_data" value="'{' $ g.timestamp $ ' 
+                        \"Store_Code\": \"sidecut\",
+                        \"Function\": \"CategoryProductList_Load_Query\",
+                        \"Category_ID\": \"'$ l.settings:current_category:id $'\",
+                        \"Assigned\": true,
+                        \"count\": 100,
+                        \"Filter\": [
+                            {
+                                \"name\": \"ondemandcolumns\",
+                                \"value\": [\"uris\", \"productimagedata\"]
+                            }
+                        ]
+                }
+                '"/>
+                <mvt:assign name="l.ok" value="crypto_hmac_sha256(g.json_data,g.signature,'binary',g.hmac_response)" />
+                <mvt:assign name="g.b64encoded_hmac_response" value="crypto_base64_encode(g.hmac_response)" />  
+                <mvt:assign name="g.headers" value="'X-Miva-API-Authorization: MIVA-HMAC-SHA256 ' $ g.access_token $ ':' $ g.b64encoded_hmac_response $ asciichar( 13 ) $ asciichar( 10 )" />
+
+                <mvt:call action="g.endpoint" method="'RAW'" headers="g.headers" content-type="'application/json'" fields="'g.json_data'">
+                    <mvt:assign name="g.responseProduct" value="s.callvalue" />
+                    <mvt:assign name="l.null" value="miva_json_decode( s.callvalue, g.responseProduct )" />
+                </mvt:call>
+                <mvt:comment> <mvt:eval expr="miva_json_encode( g.responseProduct, '')" /> </mvt:comment>
+
+                <mvt:assign name="l.settings:subcatProductArray" value="g.responseProduct:data:data" />

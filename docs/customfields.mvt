@@ -1,0 +1,23 @@
+<mvt:item name="customfields" param="Read_Category_Code( 'category_code', 'custom_field_code', l.settings:customfields )" />
+<mvt:item name="customfields" param="Read_Category_ID( l.settings:category:id, 'custom_field_code', l.settings:customfields )" />
+<mvt:item name="customfields" param="Read_Customer_Login( 'test@test.com', 'custom_field_code', l.settings:customfields )" />
+<mvt:item name="customfields" param="Read_Customer_ID( l.settings:customer:id, 'custom_field_code', l.settings:customfields )" />
+<mvt:item name="customfields" param="Read_Order( l.settings:order:id, 'custom_field_code', l.settings:customfields )" />
+<mvt:item name="customfields" param="Read_Basket( 'custom_field_code', l.settings:customfields )" />
+<mvt:item name="customfields" param="Read_Product_Code( 'product_code', 'custom_field_code', l.settings:customfields )" />
+<mvt:item name="customfields" param="Read_Product_ID( l.settings:product:id, 'custom_field_code', l.settings:customfields )" />
+<mvt:item name="customfields" param="Read_Page_Code( 'page_code', 'custom_field_code', l.settings:customfields )" />
+
+
+  <mvt:item name="customfields" param="Write_Category_Code( 'category_code', 'custom_field_code', 'value' )" />
+  <mvt:item name="customfields" param="Write_Category_ID( l.settings:category:id, 'custom_field_code', 'value' )" />
+  <mvt:item name="customfields" param="Write_Customer_Login( 'test@test.com', 'custom_field_code', 'value' )" />
+  <mvt:item name="customfields" param="Write_Customer_ID( l.settings:customer:id, 'custom_field_code', 'value' )" />
+  <mvt:item name="customfields" param="Write_Order( 1000, 'custom_field_code', 'value' )" />
+  <mvt:item name="customfields" param="Write_Basket( 'custom_field_code', l.settings:customfields )" />
+  <mvt:item name="customfields" param="Write_Product_Code( 'product_code', 'custom_field_code', 'value' )" />
+  <mvt:item name="customfields" param="Write_Product_ID( .settings:product:id, 'custom_field_code', 'value' )" />
+  <mvt:item name="customfields" param="Write_Page_Code( 'page_code', 'custom_field_code', 'value' )" />
+
+
+  

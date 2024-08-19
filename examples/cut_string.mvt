@@ -1,0 +1,1 @@
+<mvt:assign name="l.void" value="miva_splitstring( l.settings:secondary_cat_code, ',', l.settings:test, 'trim' )"/>
